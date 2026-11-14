@@ -52,8 +52,8 @@ export function Marked({ text }) {
 export function Toggle({ on, onChange, tone = 'accent', children }) {
   return (
     <button role="switch" aria-checked={on} onClick={() => onChange(!on)} className="flex items-center gap-3 text-left text-sm">
-      <span className={`relative h-6 w-11 shrink-0 rounded-full border border-line transition-colors ${on ? (tone === 'warn' ? 'bg-warn' : 'bg-accent') : 'bg-ink/20'}`}>
-        <i className={`absolute top-0.5 h-5 w-5 rounded-full bg-bg transition-all ${on ? 'left-[22px]' : 'left-0.5'}`} />
+      <span className={`flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors ${on ? (tone === 'warn' ? 'bg-warn' : 'bg-accent') : 'bg-ink/20'}`}>
+        <i className={`block h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 ${on ? 'translate-x-5' : 'translate-x-0'}`} />
       </span>
       {children}
     </button>

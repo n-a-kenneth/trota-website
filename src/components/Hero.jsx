@@ -54,8 +54,8 @@ function Phone() {
 
 function Title({ text }) {
   return text.split(/\[\[(.+?)\]\]/g).map((p, i) => i % 2
-    ? <em key={i} className="relative inline-block whitespace-nowrap italic text-accent-text">{p}
-        <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden><path className="draw" pathLength="1" d="M2 7 C 30 2, 60 9, 118 4" fill="none" stroke="rgb(var(--accent))" strokeWidth="4" strokeLinecap="round" style={{ animationDelay: '900ms' }} /></svg>
+    ? <em key={i} className="relative isolate inline-block whitespace-nowrap italic text-accent-text">{p}
+        <svg className="absolute -bottom-[0.02em] -left-[0.08em] -z-10 h-[0.32em] w-[calc(100%+0.16em)]" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden><path className="draw" pathLength="1" d="M3 8 C 30 3, 62 10, 117 5" fill="none" stroke="rgb(var(--accent))" strokeWidth="7" strokeLinecap="round" opacity=".55" style={{ animationDelay: '900ms' }} /></svg>
       </em>
     : p)
 }
