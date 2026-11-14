@@ -9,6 +9,7 @@ import "@fontsource-variable/noto-serif-tamil";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import Splash from "@/components/Splash";
 
 export const metadata = {
   title: "Trota",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <Splash />
         <Providers>{children}</Providers>
       </body>
     </html>
