@@ -7,6 +7,7 @@ import { scrollToId } from '@/hooks/useLenis'
 import { useActive } from './ui'
 import LangSwitch from './LangSwitch'
 import ThemeToggle from './ThemeToggle'
+import { Mark, Wordmark } from './Logo'
 
 export const HOW = ['import', 'security', 'sources', 'engine', 'tracker']
 const TOP = [['about', ['about']], ['how', HOW], ['impact', ['impact']], ['values', ['values']], ['team', ['team']], ['journey', ['journey']]]
@@ -22,9 +23,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/20 bg-bg/90 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="relative font-display text-2xl italic tracking-tight">
-          Trota
-          <svg className="absolute -bottom-1 left-0 w-full text-accent-text" viewBox="0 0 60 6" fill="none" aria-hidden><path d="M1 4 Q8 0 15 4 T30 4 T45 4 T59 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Trota" className="group flex items-center gap-2">
+          <Mark strokeWidth={2.2} className="h-9 w-9 text-accent transition-transform duration-700 ease-out group-hover:rotate-[360deg]" />
+          <Wordmark className="text-2xl" />
         </button>
         <ul className="hidden items-center gap-1 text-sm lg:flex">
           {TOP.map(([id, ids]) => (

@@ -5,6 +5,7 @@ import { Lock, Loader2, Check, RotateCcw, BadgeCheck, ArrowDown } from 'lucide-r
 import { useI18n } from '@/context/i18nContext'
 import { scrollToId } from '@/hooks/useLenis'
 import { paths, size } from '@/lib/flowers.json'
+import { Wordmark } from './Logo'
 
 function Phone() {
   const { t, lang } = useI18n()
@@ -65,6 +66,7 @@ export default function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-16 pt-14 md:pb-24 md:pt-24 lg:grid-cols-[1.25fr_1fr]">
       <div>
+        <Wordmark draw delay={500} className="rise mb-8 text-4xl md:text-5xl" />
         <h1 className="rise font-display text-5xl leading-[1.02] tracking-tight md:text-7xl"><Title text={t('hero.title')} /></h1>
         <p className="rise mt-8 max-w-lg text-lg leading-relaxed text-muted" style={{ animationDelay: '300ms' }}>{t('hero.sub')}</p>
         <div className="rise mt-10 flex flex-wrap items-center gap-6" style={{ animationDelay: '450ms' }}>

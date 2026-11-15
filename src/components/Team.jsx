@@ -12,31 +12,35 @@ const TEAM = [
   { name: 'Ahamed Asri', role: 'member', photo: '/images/asri.webp', linkedin: 'https://www.linkedin.com/in/ahamedasri/', github: 'https://github.com/r-ahamedasri' },
   { name: 'Isuli Vidara Premasiri', role: 'member', photo: '/images/isuli.webp', linkedin: 'https://www.linkedin.com/in/isuli-vidara-premasiri-2b58b71b9/', github: '' },
 ]
-const BLOBS = ['60% 40% 55% 45% / 50% 55% 45% 50%', '45% 55% 40% 60% / 55% 45% 55% 45%', '55% 45% 60% 40% / 45% 60% 40% 55%']
 const initials = (n) => { const w = n.split(' '); return w[0][0] + w[w.length - 1][0] }
-function Avatar({ m, i }) {
+const ext = { target: '_blank', rel: 'noopener noreferrer' }
+
+function Photo({ m }) {
   const [failed, setFailed] = useState(false)
   return (
-    <div className="grid aspect-square w-full place-items-center overflow-hidden bg-surface font-display text-4xl text-muted" style={{ borderRadius: BLOBS[i % 3] }}>
-      {m.photo && !failed ? <img src={m.photo} alt={m.name} loading="lazy" onError={() => setFailed(true)} className="h-full w-full object-cover" /> : initials(m.name)}
+    <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-full bg-surface font-display text-xl text-muted md:aspect-[4/5] md:h-auto md:w-full md:rounded-2xl md:text-4xl">
+      {m.photo && !failed
+        ? <img src={m.photo} alt={m.name} loading="lazy" onError={() => setFailed(true)} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        : initials(m.name)}
     </div>
   )
 }
-const ext = { target: '_blank', rel: 'noopener noreferrer' }
 
 export default function Team() {
   const { t } = useI18n()
   return (
     <Section id="team" title={t('team.title')} plain>
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3 lg:grid-cols-5">
+      <ul className="divide-y divide-line border-y border-line md:grid md:grid-cols-5 md:gap-5 md:divide-y-0 md:border-0">
         {TEAM.map((m, i) => (
-          <li key={m.name} className={`rv ${i % 2 ? 'md:mt-6' : ''}`} style={{ '--i': i + 1 }}>
-            <Avatar m={m} i={i} />
-            <p className="mt-4 font-semibold">{m.name}</p>
-            <p className="text-sm text-muted">{m.role === 'lead' ? t('team.lead') : t('team.role')}</p>
-            <div className="mt-2 flex gap-3 text-muted">
-              <a href={m.linkedin} {...ext} aria-label={`${m.name} LinkedIn`} className="hover:text-accent-text"><Linkedin size={16} /></a>
-              {m.github && <a href={m.github} {...ext} aria-label={`${m.name} GitHub`} className="hover:text-accent-text"><Github size={16} /></a>}
+          <li key={m.name} className="rv group flex items-center gap-4 py-4 md:block md:py-0" style={{ '--i': i + 1 }}>
+            <Photo m={m} />
+            <div className="min-w-0 flex-1 md:mt-4">
+              <p className="font-semibold leading-snug">{m.name}</p>
+              <p className="text-sm text-muted">{m.role === 'lead' ? t('team.lead') : t('team.role')}</p>
+            </div>
+            <div className="flex w-[4.75rem] shrink-0 gap-1 text-muted md:mt-2 md:-ml-2 md:w-auto">
+              <a href={m.linkedin} {...ext} aria-label={`${m.name} LinkedIn`} className="grid h-9 w-9 place-items-center rounded-full transition-colors hover:bg-surface hover:text-ink"><Linkedin size={16} /></a>
+              {m.github && <a href={m.github} {...ext} aria-label={`${m.name} GitHub`} className="grid h-9 w-9 place-items-center rounded-full transition-colors hover:bg-surface hover:text-ink"><Github size={16} /></a>}
             </div>
           </li>
         ))}
