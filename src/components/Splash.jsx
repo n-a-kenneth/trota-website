@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { paths, size } from '@/lib/flowers.json'
+import { Mark, Wordmark } from './Logo'
 
-const MIN = 1400
+const MIN = 2400
 
 export default function Splash() {
   const [phase, setPhase] = useState('in')
@@ -25,16 +25,9 @@ export default function Splash() {
   return (
     <div role="status" aria-label="Loading Trota"
       className={`splash fixed inset-0 z-[200] grid place-items-center bg-bg transition-opacity duration-700 ${phase === 'out' ? 'pointer-events-none opacity-0' : ''}`}>
-      <div className={`flex flex-col items-center transition-transform duration-700 ${phase === 'out' ? '-translate-y-3 scale-95' : ''}`}>
-        <svg viewBox={`0 0 ${size} ${size}`} className="splash-flower w-24 text-accent md:w-28" aria-hidden>
-          <path className="draw" pathLength="1" d={paths[0]} fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="relative mt-5 font-display text-5xl italic tracking-tight md:text-6xl">
-          <span className="rise inline-block" style={{ animationDelay: '250ms' }}>Trota</span>
-          <svg className="absolute -bottom-2 left-0 w-full text-accent-text" viewBox="0 0 60 6" fill="none" aria-hidden>
-            <path className="draw" pathLength="1" d="M1 4 Q8 0 15 4 T30 4 T45 4 T59 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" style={{ animationDelay: '600ms' }} />
-          </svg>
-        </span>
+      <div className={`relative grid h-64 w-64 place-items-center transition-transform duration-700 md:h-80 md:w-80 ${phase === 'out' ? '-translate-y-3 scale-95' : ''}`}>
+        <Mark draw duration="1.8s" strokeWidth={3} className="splash-flower absolute inset-0 h-full w-full text-accent" />
+        <Wordmark draw delay={700} className="rise relative text-4xl md:text-5xl" />
       </div>
     </div>
   )
