@@ -290,7 +290,8 @@
   "news": "Get product updates & launch news",
   "placeholder": "you@example.com",
   "subscribe": "Subscribe",
-  "thanks": "Thank you. You are on the list."
+  "thanks": "Thank you. You are on the list.",
+  "lead": "Updates as we build, and a say in what comes next."
  },
  "inp": {
   "title": "Bring your data",
@@ -333,51 +334,62 @@
   ]
  },
  "val": {
-  "title": "What we believe",
-  "close": "No innovation is worth the loss of our humanity.",
+  "title": "Where we stand",
+  "lead": "Technology should answer to the people who use it. Here's what that means for us, and what you can hold us to.",
   "items": [
    {
-    "t": "Our vision",
-    "s": "Every woman should own her health record, and be able to ask about her body without being sold to.",
+    "t": "People first",
+    "s": "No feature, deadline or investor comes before the person using Trota.",
     "d": [
-     "We're building toward a record that helps her first, her doctor second, and research only when she chooses to share it.",
-     "Health tools should leave people better informed and more in control, not more watched."
+     "We're building Trota because women deserve health tools that work for them: clear answers, a record they own, and nobody selling them anything along the way.",
+     "When a choice is hard, we ask one question first: is this good for the person on the other end? If it isn't, we don't ship it."
     ]
    },
    {
-    "t": "The women's health industry",
-    "s": "Women's health has been under-researched for decades, and much of the technology around it collects first and helps second.",
+    "t": "On LLMs and Generative A",
+    "s": "We share many of the worries about AI. At the same time, we don't think the answer is to look away.",
     "d": [
-     "For a long time medical research studied men by default. Conditions that mostly affect women are still often diagnosed late and funded less.",
-     "We earn nothing from your data and show no ads. If the long-term datasets women's health is missing get built, they should be built with consent, and with women from every background, not only the easiest to reach."
-    ]
-   },
-   {
-    "t": "Women's health care",
-    "s": "Most people don't need more information. They need information they can trust, and to be heard.",
-    "d": [
-     "Many of us have left an appointment feeling rushed, or unsure what to ask. Symptoms are easier to dismiss when there's no record of them.",
-     "Trota helps you learn and prepare, and keeps a clear history you can bring to your doctor. Diagnosis stays with the people trained to do it."
+     "Generative AI, as it's mostly being built today, has real costs. Much of it was trained on people's work without their consent. It uses a great deal of energy and water. It puts jobs and creative work under pressure, and it often treats personal data as raw material. Those costs land on people who were never asked.",
+     "We support strong, enforceable regulation. Companies shouldn't be left to mark their own homework. At the same time, AI is already inside the tools people use every day. If it's going to be there, someone has to show it can be built without compromising ethics.",
+     "So we use it for one job only: turning checked facts into plain sentences. It can't see what it doesn't need, it can't invent a source, and it never makes decisions about you. Machine learning may be tainted by the corporate world, we want to show that innovation doesn't have to come at the cost of our humanity and the lack of guardrails."
     ]
    },
    {
     "t": "Privacy",
-    "s": "Health data is among the most personal data there is. It shouldn't leave your hands unless you decide it should.",
+    "s": "Your health is yours. So is the record of it.",
     "d": [
-     "Your records stay on your phone. Anything identifying is removed before a question goes anywhere, and backups are encrypted with a key only you hold.",
-     "Research sharing is off until you turn it on, and you can turn it off again. We don't sell data or run ads."
+     "Your records stay on your phone. Anything that could identify you is removed before a question leaves it, and backups are locked with a key only you hold. We can't hand over what we never have.",
+     "Sharing with research is off until you choose otherwise, and you can change your mind at any time. Nothing you type is used to train AI models."
     ]
    },
    {
-    "t": "Generative AI",
-    "s": "We're critical of generative AI, and we use it with care.",
+    "t": "Care",
+    "s": "Being heard shouldn't depend on how well you remember your own history.",
     "d": [
-     "Generative AI, as it's being built today, has real costs: to jobs and creative work, to the economy, to the environment through the energy and water it uses, to people whose work was taken to train it without consent, and to privacy. Much of the industry is moving faster than anyone can check its effects.",
-     "We support clear regulation. We also accept that it's now built into the technology people use every day, for better or worse. So instead of looking away, we're trying to show what a careful version could look like: it only writes, it can't see what it doesn't need, every claim has a source, and people make the decisions.",
-     "There's a lot about this technology we can't control. We can refuse to make it worse, set an example, and keep pushing for change."
+     "Many women leave appointments feeling rushed or dismissed, unsure what to ask, with symptoms that are easy to brush aside when there's no record of them.",
+     "Trota helps you understand what's happening and walk in prepared, with a clear history you can show your doctor. It doesn't diagnose and it doesn't replace care. It helps you get better care."
+    ]
+   },
+   {
+    "t": "Research",
+    "s": "Women's health has been studied too little, for too long. Fixing that shouldn't cost anyone their privacy.",
+    "d": [
+     "For decades, medical research treated men as the default. Conditions that mostly affect women are still too often diagnosed late and funded less.",
+     "If Trota helps build the long-term data that's missing, it will be with consent, de-identified, open about how it's used, and drawn from women of every background, not only the easiest to reach."
     ]
    }
-  ]
+  ],
+  "holdT": "What you can hold us to",
+  "holdD": "Promises are easy to write. These are ones you can check.",
+  "pledges": [
+   "We will never sell your data or show you ads.",
+   "Nothing you type will be used to train AI models.",
+   "Research sharing stays off unless you turn it on, and you can turn it off.",
+   "We'll publish what our library contains and how research data is used.",
+   "If something goes wrong, we'll tell you plainly and quickly.",
+   "Every decision about Trota has a person accountable for it, not a model."
+  ],
+  "close": "No innovation is worth the loss of our humanity."
  },
  "say": {
   "text": "Ask [[anything]] about your body. Bring [[your data]] from the apps you already use. See [[where every answer comes from]]. And [[export it, pause it or delete it]] whenever you like."
