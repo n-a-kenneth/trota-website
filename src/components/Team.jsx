@@ -7,10 +7,10 @@ import Section from './Section'
 
 const TEAM = [
   { name: 'Nikesh Kenneth', role: 'lead', photo: '/images/nikesh.webp', linkedin: 'https://www.linkedin.com/in/n-a-kenneth/', github: 'https://github.com/n-a-kenneth/' },
-  { name: 'Savitha Gunathilaka', role: 'member', photo: '/images/savitha.webp', linkedin: 'https://www.linkedin.com/in/savitha-gunathilaka111/', github: '' },
+  { name: 'Savitha Gunathilaka', role: 'member', photo: '/images/savitha.webp', linkedin: 'https://www.linkedin.com/in/savitha-gunathilaka111/', github: 'https://github.com/savitha-mg' },
   { name: 'Sayumi Seneviratne', role: 'member', photo: '/images/sayumi.webp', linkedin: 'https://www.linkedin.com/in/sayumi-seneviratne-2b2579415/', github: 'https://github.com/sayumiseneviratne' },
   { name: 'Ahamed Asri', role: 'member', photo: '/images/asri.webp', linkedin: 'https://www.linkedin.com/in/ahamedasri/', github: 'https://github.com/r-ahamedasri' },
-  { name: 'Isuli Vidara Premasiri', role: 'member', photo: '/images/isuli.webp', linkedin: 'https://www.linkedin.com/in/isuli-vidara-premasiri-2b58b71b9/', github: '' },
+  { name: 'Isuli Vidara Premasiri', role: 'member', photo: '/images/isuli.webp', linkedin: 'https://www.linkedin.com/in/isuli-vidara-premasiri-2b58b71b9/', github: 'https://github.com/isuli-vidara' },
 ]
 const initials = (n) => { const w = n.split(' '); return w[0][0] + w[w.length - 1][0] }
 const ext = { target: '_blank', rel: 'noopener noreferrer' }
