@@ -213,7 +213,7 @@
  },
  "trk": {
   "title": "Your tracker",
-  "lead": "Plain statistics and data structures, no AI. Each entry updates them in one step.",
+  "lead": "We use a dummy algorytmn to track and process your cycles to personalise the app for you. This will help predict irregular periods.",
   "pr": "Your record",
   "prn": "{n} entries",
   "ring": "Recent entries",
@@ -349,7 +349,7 @@
     "t": "On LLMs and Generative AI",
     "s": "We share many of the worries about AI. At the same time, we don't think the answer is to look away.",
     "d": [
-     "Generative AI, as it's mostly being built today, has real costs. Much of it was trained on people's work without their consent. It uses a great deal of energy and water for data centres, which themseleves cause far more concern. It puts jobs and creative work under pressure, and it often treats personal data as raw material. Those costs land on people who were never asked.",
+     "Generative AI, as it's mostly being built today, has real costs. Much of it was trained on people's work without their consent. It uses a great deal of energy and water for data centres, which themselves cause far more concern. It puts jobs and creative work under pressure, and it often treats personal data as raw material. Those costs land on people who were never asked.",
      "We support strong, enforceable regulation. Companies shouldn't be left to mark their own homework. At the same time, AI is already inside the tools people use every day. If it's going to be there, someone has to show it can be built without compromising ethics.",
      "So we use it for one job only: turning checked facts into plain sentences. It can't see what it doesn't need, it can't invent a source, and it never makes decisions about you. Machine learning may be tainted by the corporate world, we want to show that innovation doesn't have to come at the cost of our humanity and the lack of guardrails."
     ]
