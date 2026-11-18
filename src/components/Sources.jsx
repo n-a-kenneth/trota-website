@@ -25,7 +25,7 @@ export default function Sources() {
       </div>
       <p className="mb-8 max-w-2xl text-sm text-muted"><span className="font-semibold text-ink">{t('src.lib')}:</span> {['tPaper', 'tJournal', 'tExpert', 'tDoctor'].map((k) => t(`src.${k}`)).join(' · ')}</p>
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className={`${card} ${standard ? 'border-warn' : 'border-line'}`}>
+        <div className={`${card} min-h-[23.5rem] ${standard ? 'border-warn' : 'border-line'}`}>
           <p className="mb-4 ml-auto max-w-sm rounded-2xl rounded-br-sm bg-accent px-4 py-3 text-sm text-accent-ink">{t('src.q')}</p>
           <ul className="space-y-2">
             {['c1', 'c2', 'c3'].map((k, i) => (
@@ -39,7 +39,7 @@ export default function Sources() {
           </ul>
           <p className="mt-4 text-sm text-muted">{t('src.hint')}</p>
         </div>
-        <div className={`${card} ${standard ? 'border-warn' : 'border-line'}`}>
+        <div className={`${card} min-h-[30.5rem] ${standard ? 'border-warn' : 'border-line'}`}>
           <p className="mb-5 flex items-center justify-between font-display text-xl">{t('src.trail')}<span className="font-mono text-xs font-normal text-muted">{t('src.ex')}</span></p>
           <ol key={`${claim}-${standard}`}>
             {shown.map(([lk, val], i) => (

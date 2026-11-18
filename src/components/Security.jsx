@@ -38,7 +38,7 @@ function Bounds({ typical }) {
       <div className="mt-5 flex flex-wrap gap-[3px]" aria-hidden>
         {Array.from({ length: TOTAL }, (_, i) => {
           const lit = !typical && KEPT.includes(i)
-          return <i key={i} className={`h-1.5 w-1.5 rounded-[1px] transition-all duration-500 ${typical ? 'bg-warn' : 'bg-accent-text'} ${go && !typical && !lit ? 'scale-50 opacity-10' : ''} ${go && lit ? 'scale-[2.4] shadow-[0_0_8px_rgb(var(--accent))]' : ''}`} style={{ transitionDelay: go && !lit ? `${(i % 80) * 8}ms` : '0ms' }} />
+          return <i key={i} className={`h-1.5 w-1.5 rounded-[1px] transition-all duration-500 ${typical ? 'bg-warn' : 'bg-accent-text'} ${go && !typical && !lit ? 'scale-50 opacity-10' : ''} ${go && lit ? 'scale-[2.4]' : ''}`} style={{ transitionDelay: go && !lit ? `${(i % 80) * 8}ms` : '0ms' }} />
         })}
       </div>
       <p className="mt-4 font-display text-4xl">{n.toLocaleString()} <span className="text-lg text-muted">/ 1,284 · {t('sec.fPass')}</span></p>
@@ -128,7 +128,7 @@ function Cross({ typical }) {
 }
 
 function Node({ on, typical, off, className = '', children }) {
-  return <div className={`rounded-xl border px-3 py-2 text-sm transition-all duration-500 ${on ? (typical ? 'border-warn bg-warn/10' : 'border-accent-text bg-accent/30 shadow-[0_0_20px_-4px_rgb(var(--accent)/0.6)]') : 'border-line'} ${off ? 'opacity-35' : ''} ${className}`}>{children}</div>
+  return <div className={`rounded-xl border px-3 py-2 text-sm transition-all duration-500 ${on ? (typical ? 'border-warn bg-warn/10' : 'border-accent-text bg-accent/15') : 'border-line'} ${off ? 'opacity-35' : ''} ${className}`}>{children}</div>
 }
 const Arrow = () => <div className="mx-auto h-4 w-px bg-ink/25" />
 const pill = 'rounded-full border border-line px-2 py-0.5 text-[11px] text-muted'
@@ -181,15 +181,13 @@ export default function Security() {
           </div>
 
           <div className="min-w-0">
-            <ol className="flex gap-2 overflow-x-auto pb-2">
+            <ol className="mb-3 grid grid-cols-5 gap-1.5">
               {[0, 1, 2, 3, 4].map((i) => (
-                <li key={i}><button onClick={() => go(i)} aria-current={i === step} className={`flex items-center gap-2 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm transition-colors ${i === step ? (typical ? 'border-warn bg-warn text-bg' : 'border-accent-text bg-accent text-accent-ink') : i < step ? 'border-line' : 'border-line text-muted'}`}>
-                  <span className="font-mono text-xs">{i + 1}</span><span className="hidden xl:inline">{t(`sec.s${i}`)}</span>
-                </button></li>
+                <li key={i}><button onClick={() => go(i)} aria-current={i === step} aria-label={t(`sec.s${i}`)} title={t(`sec.s${i}`)} className={`h-8 w-full rounded-full border font-mono text-xs transition-colors ${i === step ? (typical ? 'border-warn bg-warn text-bg' : 'border-accent bg-accent text-accent-ink') : i < step ? 'border-line text-ink' : 'border-line text-muted hover:text-ink'}`}>{i + 1}</button></li>
               ))}
             </ol>
             <div className="h-0.5 rounded bg-ink/10"><div className={`h-full rounded transition-all duration-700 ${typical ? 'bg-warn' : 'bg-accent-text'}`} style={{ width: `${(step / LAST) * 100}%` }} /></div>
-            <div key={`${step}-${typical}-${attack}`} className={`rise mt-4 min-h-[26rem] rounded-2xl border bg-surface  p-5 md:p-7 ${typical ? 'border-warn/40' : 'border-line'}`}>
+            <div key={`${step}-${typical}-${attack}`} className={`rise mt-4 h-[48rem] overflow-hidden rounded-2xl border bg-surface p-5 sm:h-[42rem] md:h-[38rem] md:p-7 ${typical ? 'border-warn/40' : 'border-line'}`}>
               <h3 className="font-display text-2xl md:text-3xl">{t(`sec.s${step}`)}</h3>
               <p className="mb-5 mt-2 max-w-2xl leading-relaxed text-muted">{t(`sec.${typical ? 'x' : 'd'}${step}`)}</p>
               {stage}

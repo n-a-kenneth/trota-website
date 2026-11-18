@@ -5,7 +5,6 @@ import { Lock, Loader2, Check, RotateCcw, BadgeCheck, ArrowDown } from 'lucide-r
 import { useI18n } from '@/context/i18nContext'
 import { scrollToId } from '@/hooks/useLenis'
 import { paths, size } from '@/lib/flowers.json'
-import { Wordmark } from './Logo'
 
 function Phone() {
   const { t, lang } = useI18n()
@@ -33,7 +32,7 @@ function Phone() {
         <span className="font-display text-xl italic">Trota</span>
         <span className="flex items-center gap-1.5 rounded-full bg-bg px-2.5 py-1 text-[11px]"><Lock size={11} />{t('hero.badge')}</span>
       </div>
-      <div className="mt-5 min-h-[300px]">
+      <div className="mt-5 h-[330px]">
         {stage >= 1 && <p className="rise ml-auto w-[85%] rounded-2xl rounded-br-md bg-accent px-4 py-3 text-sm text-accent-ink">{t('hero.q')}</p>}
         {stage >= 2 && (
           <p className="rise mt-3 flex items-center gap-2 text-xs text-muted">
@@ -66,7 +65,6 @@ export default function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-16 pt-14 md:pb-24 md:pt-24 lg:grid-cols-[1.25fr_1fr]">
       <div>
-        <Wordmark draw delay={500} className="rise mb-8 text-4xl md:text-5xl" />
         <h1 className="rise font-display text-5xl leading-[1.02] tracking-tight md:text-7xl"><Title text={t('hero.title')} /></h1>
         <p className="rise mt-8 max-w-lg text-lg leading-relaxed text-muted" style={{ animationDelay: '300ms' }}>{t('hero.sub')}</p>
         <div className="rise mt-10 flex flex-wrap items-center gap-6" style={{ animationDelay: '450ms' }}>
