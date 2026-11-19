@@ -44,13 +44,15 @@ export default function Split() {
   return (
     <Section id="engine" title={t('eng.title')} lead={t('eng.lead')} more="eng">
       <div ref={ref}>
-        <div className="mb-6 flex flex-wrap gap-2">
-          {PROMPTS.map((id, i) => <button key={id} onClick={() => setPi(i)} aria-pressed={pi === i} className={`rounded-full border border-line px-4 py-2 text-sm font-semibold transition-colors ${pi === i ? 'bg-accent text-accent-ink' : 'hover:bg-surface'}`}>{t(`eng.${id}.q`)}</button>)}
-        </div>
         <div className="grid items-stretch gap-3 md:min-h-[34rem] lg:min-h-[28.5rem] md:grid-cols-[1fr_auto_1.5fr_auto_1fr]">
           <Box>
             <p className="font-mono text-xs text-muted">{t('eng.you')}</p>
-            <p className="mt-3 rounded-2xl rounded-br-sm bg-accent px-4 py-3 text-sm text-accent-ink">{k('q')}</p>
+            <div className="mt-3 space-y-2">
+              {PROMPTS.map((id, i) => (
+                <button key={id} onClick={() => setPi(i)} aria-pressed={pi === i}
+                  className={`block w-full rounded-2xl px-4 py-3 text-left text-sm transition-colors ${pi === i ? 'rounded-br-sm bg-accent text-accent-ink' : 'border border-line text-muted hover:text-ink'}`}>{t(`eng.${id}.q`)}</button>
+              ))}
+            </div>
           </Box>
           <Link on={step >= 1} />
           <div className="space-y-3">
@@ -81,15 +83,17 @@ export default function Split() {
           </Box>
         </div>
 
-        <div className="mt-10 rounded-2xl border border-line bg-surface p-5  md:p-7">
-          <p className="font-display text-xl">{t('eng.mTitle')}</p>
-          <label htmlFor="months" className="mt-4 flex items-center justify-between text-sm font-semibold">{t('eng.mMonths')}<span className="font-display text-xl">{months}</span></label>
-          <input id="months" type="range" min="1" max="24" value={months} onChange={(e) => setMonths(+e.target.value)} className="mt-2 w-full accent-[rgb(var(--accent-text))]" />
-          <div className="mt-6 space-y-4">
+        <div className="mt-5 grid gap-5 rounded-2xl border border-line bg-surface p-5 md:grid-cols-[15rem_1fr] md:items-center">
+          <div>
+            <p className="font-display text-lg">{t('eng.mTitle')}</p>
+            <label htmlFor="months" className="mt-3 flex items-center justify-between text-sm font-semibold">{t('eng.mMonths')}<span className="font-display text-lg">{months}</span></label>
+            <input id="months" type="range" min="1" max="24" value={months} onChange={(e) => setMonths(+e.target.value)} className="mt-1 w-full accent-[rgb(var(--accent-text))]" />
+          </div>
+          <div className="space-y-3">
             <Bar label={t('eng.mAll')} tokens={typ} full={typ > WINDOW} t={t} />
             <Bar label={t('eng.mSum')} tokens={SUMMARY} good t={t} />
+            <p className="text-xs text-muted">{t('eng.mNote')}</p>
           </div>
-          <p className="mt-4 text-xs text-muted">{t('eng.mNote')}</p>
         </div>
       </div>
     </Section>

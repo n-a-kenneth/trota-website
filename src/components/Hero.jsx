@@ -69,7 +69,7 @@ export default function Hero() {
         <p className="rise mt-8 max-w-lg text-lg leading-relaxed text-muted" style={{ animationDelay: '300ms' }}>{t('hero.sub')}</p>
         <div className="rise mt-10 flex flex-wrap items-center gap-6" style={{ animationDelay: '450ms' }}>
           <button onClick={() => scrollToId('about')} className="rounded-full bg-ink px-6 py-3 font-semibold text-bg transition-transform hover:-translate-y-0.5">{t('hero.demo')}</button>
-          <button onClick={() => scrollToId('import')} className="group flex items-center gap-2 font-semibold underline decoration-accent decoration-2 underline-offset-8">{t('hero.howbtn')}<ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" /></button>
+          <button onClick={() => scrollToId('how')} className="group flex items-center gap-2 font-semibold underline decoration-accent decoration-2 underline-offset-8">{t('hero.howbtn')}<ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" /></button>
         </div>
       </div>
       <div className="relative">

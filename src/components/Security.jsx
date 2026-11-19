@@ -49,9 +49,9 @@ function Bounds({ typical }) {
 
 function Row({ icon: I, text, score, i, bad, go }) {
   return (
-    <li className="rise rounded-xl bg-bg px-3 py-2 text-sm" style={{ animationDelay: `${i * 120}ms` }}>
+    <li className="rise rounded-xl bg-bg px-3 py-1.5 text-sm" style={{ animationDelay: `${i * 120}ms` }}>
       <div className="flex items-center gap-2"><I size={14} className={`shrink-0 ${bad ? 'text-warn' : 'text-accent-text'}`} />{text}</div>
-      <div className="mt-1.5 h-1 rounded bg-surface"><div className={`h-full rounded transition-[width] duration-1000 ${bad ? 'bg-warn' : 'bg-accent-text'}`} style={{ width: go ? `${score * 100}%` : '0%' }} /></div>
+      <div className="mt-1 h-1 rounded bg-surface"><div className={`h-full rounded transition-[width] duration-1000 ${bad ? 'bg-warn' : 'bg-accent-text'}`} style={{ width: go ? `${score * 100}%` : '0%' }} /></div>
     </li>
   )
 }
@@ -63,13 +63,13 @@ function Memories({ typical }) {
   if (typical) return (
     <div className="rounded-2xl border border-warn/50 p-4">
       <p className="mb-3 text-sm text-warn">{t('sec.mPile')}</p>
-      <ul className="space-y-2">{rec}<Row icon={UserRound} text="Savi Fernando · NIC 957654321V" score={0.4} i={6} go={go} bad />{lit}</ul>
+      <ul className="space-y-1.5">{rec}<Row icon={UserRound} text="Savi Fernando · NIC 957654321V" score={0.4} i={6} go={go} bad />{lit}</ul>
     </div>
   )
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border border-line p-4"><p className="mb-3 flex items-center gap-2 text-sm font-semibold"><Lock size={14} className="text-accent-text" />{t('sec.mRecH')}</p><ul className="space-y-2">{rec}</ul></div>
+        <div className="rounded-2xl border border-line p-4"><p className="mb-3 flex items-center gap-2 text-sm font-semibold"><Lock size={14} className="text-accent-text" />{t('sec.mRecH')}</p><ul className="space-y-1.5">{rec}</ul></div>
         <div className="rounded-2xl border border-line p-4"><p className="mb-3 flex items-center gap-2 text-sm font-semibold"><BookOpen size={14} className="text-accent-text" />{t('sec.mLitH')}</p><ul className="space-y-2">{lit}</ul></div>
       </div>
       <p className="mt-3 text-sm text-muted">{fill(t('sec.mSim'), { n: ALLOWED })} <span className="text-xs">({t('sec.mEx')})</span></p>
@@ -155,12 +155,13 @@ export default function Security() {
   return (
     <Section id="security" title={t('sec.title')} lead={t('sec.lead')} more="sec">
       <div ref={ref}>
-        <div className="mb-6 flex flex-wrap items-center gap-4">
-          <Seg value={typical} onChange={setTypical} options={[[true, t('ui.typical'), 'warn'], [false, t('ui.trota')]]} />
-          <Toggle on={attack} onChange={setAttack} tone="warn"><span className="text-muted">{t('sec.attack')}</span></Toggle>
-        </div>
         <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
-          <div className="rounded-3xl border border-line bg-surface p-4 ">
+          <div className="space-y-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <Seg value={typical} onChange={setTypical} options={[[true, t('ui.typical'), 'warn'], [false, t('ui.trota')]]} />
+            <Toggle on={attack} onChange={setAttack} tone="warn"><span className="text-muted">{t('sec.attack')}</span></Toggle>
+          </div>
+          <div className="rounded-3xl border border-line bg-surface p-4">
             <p className="mb-2 flex items-center gap-2 text-xs font-semibold text-muted"><Smartphone size={14} />{t('sec.device')}</p>
             <div className="rounded-2xl border-2 border-dashed border-line p-3">
               <Node on={on('ask')} typical={typical}><span className="flex items-center gap-2"><MessageCircle size={14} />{t('sec.nAsk')}</span></Node><Arrow />
@@ -179,23 +180,24 @@ export default function Security() {
             <Node on={on('cloud')} typical={typical}><span className="flex items-center gap-2"><Cloud size={14} />{t('sec.nCloud')}</span></Node>
             <Node on={on('backup')} typical={typical} off={typical} className="mt-2"><span className="flex items-center gap-2"><HardDrive size={14} />{t('sec.nBackup')}</span></Node>
           </div>
+          </div>
 
           <div className="min-w-0">
-            <ol className="mb-3 grid grid-cols-5 gap-1.5">
+            <div className="mb-3 flex items-center gap-1.5">
+            <ol className="grid flex-1 grid-cols-5 gap-1.5">
               {[0, 1, 2, 3, 4].map((i) => (
                 <li key={i}><button onClick={() => go(i)} aria-current={i === step} aria-label={t(`sec.s${i}`)} title={t(`sec.s${i}`)} className={`h-8 w-full rounded-full border font-mono text-xs transition-colors ${i === step ? (typical ? 'border-warn bg-warn text-bg' : 'border-accent bg-accent text-accent-ink') : i < step ? 'border-line text-ink' : 'border-line text-muted hover:text-ink'}`}>{i + 1}</button></li>
               ))}
             </ol>
-            <div className="h-0.5 rounded bg-ink/10"><div className={`h-full rounded transition-all duration-700 ${typical ? 'bg-warn' : 'bg-accent-text'}`} style={{ width: `${(step / LAST) * 100}%` }} /></div>
-            <div key={`${step}-${typical}-${attack}`} className={`rise mt-4 h-[48rem] overflow-hidden rounded-2xl border bg-surface p-5 sm:h-[42rem] md:h-[38rem] md:p-7 ${typical ? 'border-warn/40' : 'border-line'}`}>
-              <h3 className="font-display text-2xl md:text-3xl">{t(`sec.s${step}`)}</h3>
-              <p className="mb-5 mt-2 max-w-2xl leading-relaxed text-muted">{t(`sec.${typical ? 'x' : 'd'}${step}`)}</p>
-              {stage}
+              <button onClick={() => go(step - 1)} disabled={step === 0} aria-label={t('ui.prev')} className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line disabled:opacity-30"><ChevronLeft size={14} /></button>
+              <button onClick={() => go(step + 1)} disabled={step === LAST} aria-label={t('ui.next')} className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line disabled:opacity-30"><ChevronRight size={14} /></button>
+              <button onClick={() => { setStep(0); setPlaying(true) }} aria-label={t('ui.replay')} className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-muted hover:text-ink"><RotateCcw size={14} /></button>
             </div>
-            <div className="mt-4 flex items-center gap-2">
-              <button onClick={() => go(step - 1)} disabled={step === 0} className="flex items-center gap-1 rounded-full border border-line px-3 py-1.5 text-sm disabled:opacity-40"><ChevronLeft size={14} />{t('ui.prev')}</button>
-              <button onClick={() => go(step + 1)} disabled={step === LAST} className="flex items-center gap-1 rounded-full border border-line px-3 py-1.5 text-sm disabled:opacity-40">{t('ui.next')}<ChevronRight size={14} /></button>
-              <button onClick={() => { setStep(0); setPlaying(true) }} className="ml-auto flex items-center gap-1.5 text-sm text-muted hover:text-ink"><RotateCcw size={14} />{t('ui.replay')}</button>
+            <div className="h-0.5 rounded bg-ink/10"><div className={`h-full rounded transition-all duration-700 ${typical ? 'bg-warn' : 'bg-accent-text'}`} style={{ width: `${(step / LAST) * 100}%` }} /></div>
+            <div key={`${step}-${typical}-${attack}`} className={`rise mt-4 h-[48rem] overflow-hidden rounded-2xl border bg-surface p-5 sm:h-[42rem] md:h-[35rem] md:p-7 ${typical ? 'border-warn/40' : 'border-line'}`}>
+              <h3 className="font-display text-xl md:text-2xl">{t(`sec.s${step}`)}</h3>
+              <p className="mb-4 mt-1.5 max-w-2xl text-sm leading-relaxed text-muted">{t(`sec.${typical ? 'x' : 'd'}${step}`)}</p>
+              {stage}
             </div>
           </div>
         </div>

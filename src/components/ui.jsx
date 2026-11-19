@@ -1,6 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
+
+export const Embedded = createContext(false)
+export const useEmbedded = () => useContext(Embedded)
 
 export const fill = (s, o) => Object.entries(o).reduce((a, [k, v]) => a.replaceAll(`{${k}}`, v), s)
 

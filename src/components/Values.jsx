@@ -9,7 +9,7 @@ export default function Values() {
   const { t } = useI18n()
   const items = t('val.items')
   const pledges = t('val.pledges')
-  const [open, setOpen] = useState(0)
+  const [open, setOpen] = useState(null)
   return (
     <Section id="values" title={t('val.title')} lead={t('val.lead')} plain>
       <ol className="divide-y divide-line border-y border-line">
