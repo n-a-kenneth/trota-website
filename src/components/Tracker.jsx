@@ -40,7 +40,7 @@ const gen = () => {
 }
 
 function Card({ title, note, children }) {
-  return <div className="rounded-2xl bg-bg p-4"><p className="font-semibold">{title}</p><p className="mt-1 text-xs text-muted">{note}</p>{children}</div>
+  return <div className="rounded-2xl bg-surface p-4"><p className="font-semibold">{title}</p><p className="mt-1 text-xs text-muted">{note}</p>{children}</div>
 }
 
 export default function Tracker() {
@@ -54,7 +54,7 @@ export default function Tracker() {
     return () => clearInterval(id)
   }, [visible, paused])
 
-  const W = 320, H = 100, PW = W - 36
+  const W = 640, H = 130, PW = W - 40
   const pts = s.data.slice(-16), ews = s.ews.slice(-16), fl = s.fl.slice(-16)
   const x = (i) => (i * PW) / 15
   const y = (v) => H - 8 - ((Math.min(44, Math.max(22, v)) - 22) / 22) * (H - 16)
@@ -67,8 +67,8 @@ export default function Tracker() {
 
   return (
     <Section id="tracker" title={t('trk.title')} lead={t('trk.lead')} more="trk">
-      <div ref={ref} className="space-y-4 rounded-2xl border border-line bg-surface p-5  md:p-7">
-        <div className="rounded-2xl bg-bg p-4">
+      <div ref={ref} className="space-y-4">
+        <div className="rounded-2xl bg-surface p-4">
           <div className="flex items-center justify-between text-sm"><p className="font-semibold">{t('trk.pr')}</p><p className="font-mono text-xs text-muted">{t('trk.prn').replace('{n}', s.n)}</p></div>
           <svg viewBox={`0 0 ${W} ${H}`} className="mt-3 w-full" role="img" aria-label={t('trk.pr')}>
             <polyline fill="none" stroke="rgb(var(--line))" strokeWidth="1.5" strokeDasharray="4 4" points={ews.map((v, i) => `${x(i)},${y(v)}`).join(' ')} />
@@ -82,7 +82,7 @@ export default function Tracker() {
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card title={t('trk.ring')} note={t('trk.ringD')}>
-            <div className="mt-3 flex flex-wrap gap-1.5">{s.data.slice(-8).map((v, i, a) => { const id = s.n - a.length + i + 1; return <span key={id} className="rise rounded bg-surface px-1.5 py-0.5 font-mono text-xs">#{id} {v}</span> })}</div>
+            <div className="mt-3 flex flex-wrap gap-1.5">{s.data.slice(-8).map((v, i, a) => { const id = s.n - a.length + i + 1; return <span key={id} className="rise rounded bg-bg px-1.5 py-0.5 font-mono text-xs">#{id} {v}</span> })}</div>
           </Card>
           <Card title={t('trk.map')} note={t('trk.mapD')}>
             <div className="mt-3 flex h-16 items-end gap-1">{BUCKETS.map((b) => <div key={b} className={`flex-1 rounded-t transition-all duration-700 ${L.b === b ? 'bg-accent-text' : 'bg-ink/25'}`} style={{ height: `${((s.bins[b] || 0) / maxBin) * 100}%` }} />)}</div>
@@ -93,7 +93,7 @@ export default function Tracker() {
           </Card>
           <Card title={t('trk.adapt')} note={fill(t('trk.adaptD'), { a: s.alpha.toFixed(2) })}>
             <p className="mt-3 font-display text-3xl">{s.ewma.toFixed(1)}</p>
-            <div className="mt-2 h-1.5 rounded bg-surface"><div className="h-full rounded bg-accent-text transition-all duration-700" style={{ width: `${(s.alpha / 0.6) * 100}%` }} /></div>
+            <div className="mt-2 h-1.5 rounded bg-bg"><div className="h-full rounded bg-accent-text transition-all duration-700" style={{ width: `${(s.alpha / 0.6) * 100}%` }} /></div>
           </Card>
         </div>
         <div className="grid gap-4 md:grid-cols-[1fr_auto]">

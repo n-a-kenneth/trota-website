@@ -9,15 +9,14 @@ import LangSwitch from './LangSwitch'
 import ThemeToggle from './ThemeToggle'
 import { Mark, Wordmark } from './Logo'
 
-export const HOW = ['import', 'security', 'sources', 'engine', 'tracker']
-const TOP = [['about', ['about']], ['how', HOW], ['impact', ['impact']], ['values', ['values']], ['team', ['team']], ['journey', ['journey']]]
+const TOP = [['about', ['about']], ['how', ['how']], ['impact', ['impact']], ['values', ['values']], ['team', ['team']], ['journey', ['journey']]]
 const ALL = TOP.flatMap(([, ids]) => ids)
 
 export default function Navbar() {
   const { t } = useI18n()
   const [menu, setMenu] = useState(false)
   const active = useActive(ALL)
-  const go = (id) => { setMenu(false); scrollToId(id === 'how' ? HOW[0] : id) }
+  const go = (id) => { setMenu(false); scrollToId(id) }
   const on = (ids) => ids.includes(active)
 
   return (

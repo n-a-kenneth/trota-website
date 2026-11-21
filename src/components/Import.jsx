@@ -48,22 +48,19 @@ export default function Import() {
           <div className="mt-4 flex flex-wrap gap-2">
             {SOURCES.map(([k, label]) => <button key={k} onClick={() => pick(k)} aria-pressed={src === k} className={`${btn} ${src === k ? 'bg-accent text-accent-ink' : 'hover:bg-bg'}`}>{label ?? t('inp.file')}</button>)}
           </div>
-          {phase === 'idle'
-            ? <button onClick={run} className={`${btn} mt-5 bg-ink text-bg`}>{t('inp.run')}</button>
-            : (
-              <div className="mt-5 space-y-3 text-sm">
-                <div className="h-2 overflow-hidden rounded-full bg-ink/10"><div className="h-full rounded-full bg-accent-text transition-[width] duration-100" style={{ width: `${(rows / ROWS) * 100}%` }} /></div>
-                <p className="font-mono text-xs">{fill(t('inp.rows'), { n: rows.toLocaleString() })}</p>
-                {phase === 'done' && (
-                  <>
-                    <p className="text-xs text-muted">{t('inp.map')}</p>
-                    <ul className="space-y-1.5">{FIELDS[src].map(([a, b], i) => <li key={a} className="rise flex flex-wrap items-center gap-2 rounded-lg bg-bg px-3 py-1.5 font-mono text-xs" style={{ animationDelay: `${i * 140}ms` }}><span className="break-all">{a}</span><span className="text-accent-text">→</span><span>{b}</span></li>)}</ul>
-                    <p className="rise text-xs text-muted">{t('inp.skipped')}</p>
-                    <p className="rise flex items-center gap-2 font-semibold"><Lock size={14} className="text-accent-text" />{t('inp.stored')}</p>
-                  </>
-                )}
+          <div className="mt-5 min-h-[19rem] text-sm">
+            {phase === 'idle' && <button onClick={run} className={`${btn} bg-ink text-bg`}>{t('inp.run')}</button>}
+            <div className={`space-y-3 ${phase === 'idle' ? 'hidden' : ''}`}>
+              <div className="h-2 overflow-hidden rounded-full bg-ink/10"><div className="h-full rounded-full bg-accent-text transition-[width] duration-100" style={{ width: `${(rows / ROWS) * 100}%` }} /></div>
+              <p className="font-mono text-xs">{fill(t('inp.rows'), { n: rows.toLocaleString() })}</p>
+              <div className={phase === 'done' ? 'space-y-3' : 'invisible space-y-3'}>
+                <p className="text-xs text-muted">{t('inp.map')}</p>
+                <ul className="space-y-1.5">{FIELDS[src].map(([a, b], i) => <li key={a} className={`flex flex-wrap items-center gap-2 rounded-lg bg-bg px-3 py-1.5 font-mono text-xs ${phase === 'done' ? 'rise' : ''}`} style={{ animationDelay: `${i * 140}ms` }}><span className="break-all">{a}</span><span className="text-accent-text">→</span><span>{b}</span></li>)}</ul>
+                <p className="text-xs text-muted">{t('inp.skipped')}</p>
+                <p className="flex items-center gap-2 font-semibold"><Lock size={14} className="text-accent-text" />{t('inp.stored')}</p>
               </div>
-            )}
+            </div>
+          </div>
         </div>
 
         <div className={card}>
